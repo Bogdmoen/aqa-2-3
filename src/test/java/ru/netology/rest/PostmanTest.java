@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
 
 public class PostmanTest {
 
@@ -53,7 +53,8 @@ public class PostmanTest {
                 .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("data.var1", equalTo("test2"));
+                .body("data.var1", equalTo("test1"))
+                .body("data.var2", startsWith("t"));
     }
 
 
